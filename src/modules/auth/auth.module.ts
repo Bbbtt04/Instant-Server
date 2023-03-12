@@ -7,6 +7,7 @@ import { jwtConstants } from './constants';
 import { UserModule } from '../user/user.module';
 import { LocalStrategy } from './local.strategy';
 import { JwtStrategy } from './jwt.strategy';
+import { UserService } from '../user/user.service';
 
 @Module({
   imports: [

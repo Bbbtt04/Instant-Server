@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, UseGuards, Req } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  UseGuards,
+  Req,
+  Query,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { UserService } from './user.service';
@@ -14,6 +22,11 @@ export class UserController {
   @Get()
   getUserInfo(@Req() req) {
     return req.user;
+  }
+
+  @Get('all')
+  findAll(@Query() query: any) {
+    return this.userService.findAll(query);
   }
 
   @Post('register')

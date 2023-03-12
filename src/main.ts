@@ -9,6 +9,9 @@ async function bootstrap() {
   // 全局拦截器
   app.useGlobalInterceptors(new TransformInterceptor());
 
+  // 跨域
+  app.enableCors();
+
   // swagger
   const options = new DocumentBuilder()
     .setTitle('Instant Messaging')

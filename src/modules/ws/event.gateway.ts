@@ -7,7 +7,7 @@ import {
 } from '@nestjs/websockets';
 import { Socket } from 'socket.io';
 
-@WebSocketGateway(80, {
+@WebSocketGateway(2999, {
   cors: {
     origin: '*',
   },
