@@ -31,10 +31,12 @@ export class EventGateway {
   sendMessage(
     @MessageBody()
     data: {
-      username: string;
+      to: string;
     },
     @ConnectedSocket() client: Socket,
   ): WsResponse<unknown> {
+    console.log(data.to);
+
     client.broadcast.emit('showMessage');
     client.emit('showMessage');
     return;

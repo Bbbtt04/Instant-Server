@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import QueryUserDto from './dto/query-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
 
 @Injectable()
@@ -40,5 +41,11 @@ export class UserService {
       throw new HttpException('用户名已存在', 401);
     }
     return await this.userRepository.save(user);
+  }
+
+  async update(updateUser: UpdateUserDto) {
+    const findUser = await this.findOne(updateUser.username);
+    findUser.avatar = updateUser.avatar;
+    return await this.userRepository.save(findUser);
   }
 }
