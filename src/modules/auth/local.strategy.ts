@@ -16,7 +16,13 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
   async validate(username: string, password: string): Promise<any> {
     const isexit = await this.authService.findUser(username);
     if (!isexit) {
-      this.UserService.create({ username, password });
+      this.UserService.create({
+        username,
+        password,
+        avatar: `https://api.multiavatar.com/Binx%${Math.floor(
+          Math.random() * 50000,
+        )}`,
+      });
     }
     const user = await this.authService.validateUser(username, password);
     if (!user) {
