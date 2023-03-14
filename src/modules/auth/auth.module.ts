@@ -16,7 +16,7 @@ import { UserService } from '../user/user.service';
     JwtModule.register({
       secret: jwtConstants.secret,
       signOptions: {
-        expiresIn: '120s',
+        expiresIn: '2 days',
       },
     }),
   ],

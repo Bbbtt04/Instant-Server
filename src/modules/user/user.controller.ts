@@ -13,6 +13,7 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserService } from './user.service';
 
+@ApiBearerAuth('123')
 @ApiTags('用户模块')
 @Controller('user')
 export class UserController {
@@ -20,7 +21,6 @@ export class UserController {
 
   @UseGuards(AuthGuard('jwt'))
   @ApiOperation({ summary: '获取用户信息' })
-  @ApiBearerAuth()
   @Get()
   getUserInfo(@Req() req) {
     return req.user;
